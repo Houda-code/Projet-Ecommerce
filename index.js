@@ -1,6 +1,7 @@
 const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
+const cors = require("cors");
 
 
 // DB connection
@@ -22,6 +23,7 @@ const authRoutes = require("./routes/auth.routes");
 
 //middlewares
 app.use(express.json());
+app.use(cors());
 app.use(express.urlencoded({ extended: true }));
 
 //route middlewares
