@@ -19,15 +19,18 @@ mongoose.connection.on("error", (err) => {
 
 //import route middlewares
 const authRoutes = require("./routes/auth.routes");
-//const invoiceRoutes = require("./routes/invoice.routes");
+const productRoutes = require("./routes/product.routes");
+
 
 //middlewares
 app.use(express.json());
 app.use(cors());
 app.use(express.urlencoded({ extended: true }));
 
+
 //route middlewares
 app.use("/auth",authRoutes);
+app.use("/product",productRoutes);
 
 
 //server listening

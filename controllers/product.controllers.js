@@ -1,4 +1,6 @@
-const Invoice = require("../models/invoice.models");
+const Product = require("../models/product.models");
+const Category = require("../models/category.models");
+
 
 const getProducts = async (req, res) => {
   try {
@@ -10,13 +12,22 @@ const getProducts = async (req, res) => {
 };
 const createProduct = async (req, res) => {
   try {
+    const newCategory = new Category({
+      title: req.body.title,
+      brand: req.body.brand,
+    });
+    const savedCategory = await newCategory.save();
+
+
     const newProduct = new Product({
      
       name: req.body.name,
       price: req.body.price,
       ref: req.body.ref,
-      category: req.body.price,
+      category: savedCategory._id,
       description: req.body.description,
+      countInStock: req.body.countInStock,
+      imageUrl: req.body.imageUrl,
      
      
     });

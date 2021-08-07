@@ -1,0 +1,9 @@
+
+*:focus {
+  outline: none !important;
+}
+
+.w-32px {
+  width: 32px;
+  height: 32px;
+}
