@@ -2,8 +2,8 @@ import axios from "axios";
 
 import {
     CREATE_PRODUCT,
-    DELETE_PRODUCT,
-    UPDATE_PRODUCT,
+   // DELETE_PRODUCT,
+   // UPDATE_PRODUCT,
     GET_PRODUCTS,
     SPINNER_LOADING,
     SPINNER_LOADED,
@@ -19,7 +19,7 @@ export const createProduct = (data) => async (dispatch) => {
       },
     };
     try {
-      const res = await axios.post("http://localhost:8000/products", data, config);
+      const res = await axios.post("http://localhost:8000/product", data, config);
       dispatch({
         type: CREATE_PRODUCT,
         payload: res.data.product,
@@ -34,9 +34,9 @@ export const createProduct = (data) => async (dispatch) => {
   };
 
   export const getProducts = () => async (dispatch) => {
-    dispatch({ type: SPINNER_LOADING });
+    
     try {
-        const res = await axios.get("http://localhost:8000/products");
+        const res = await axios.get("http://localhost:8000/product");
         dispatch({
             type: GET_PRODUCTS,
             payload: res.data.products,
@@ -48,5 +48,5 @@ export const createProduct = (data) => async (dispatch) => {
             payload: err,
           });
     }
-    dispatch({ type: SPINNER_LOADED });
+  
   };

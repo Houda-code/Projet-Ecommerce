@@ -34,7 +34,7 @@ const createCategory = async (req, res) => {
       const newCategory = new Category({
         title: req.body.title,
         brand: req.body.brand,
-        product: req.body._id,
+       // product: req.body._id,
 
       });
       const savedCategory = await newCategory.save();

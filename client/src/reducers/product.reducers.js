@@ -1,8 +1,8 @@
 import {
     CREATE_PRODUCT,
     GET_PRODUCTS,
-    DELETE_PRODUCT,
-    UPDATE_PRODUCT,
+   // DELETE_PRODUCT,
+    //UPDATE_PRODUCT,
     PRODUCT_ERROR
     
   } from "../constants/types";

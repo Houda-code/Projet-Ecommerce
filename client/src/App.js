@@ -1,6 +1,8 @@
 import Login from "./app/auth/Login";
 import Register from "./app/auth/Register";
-import Landing from "./app/Landing"
+import Landing from "./app/Landing";
+import Header from "./app/shared/Header";
+import productCard from "./app/productCard";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { Provider } from "react-redux";
 import { store } from "./store";
@@ -25,17 +27,22 @@ function App() {
     }, []);
   return (
     <Provider store={store}>
-    <Fragment>
-    <Router>
-        <Route exact path="/login" component={ Login } />
-        <Route exact path="/register" component={ Register } />
-        <Route exact path="/landing" component={ Landing } />
+     <Fragment>
+        <Router>
+          <Header/>
+             <Switch>
+                 <Route exact path="/login" component={ Login } />
+                 <Route exact path="/register" component={ Register } />
+                 <Route exact path="/landing" component={ Landing } />
+                 <Route exact path="/productCard" component={ productCard } />
         
-    </Router>
+              </Switch>
+        
+        </Router>
      
     </Fragment>
       
-    </Provider>
+  </Provider>
    
    
   );
