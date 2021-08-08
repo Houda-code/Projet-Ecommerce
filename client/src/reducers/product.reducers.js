@@ -3,7 +3,9 @@ import {
     GET_PRODUCTS,
    // DELETE_PRODUCT,
     //UPDATE_PRODUCT,
-    PRODUCT_ERROR
+    PRODUCT_ERROR,
+    GET_PRODUCT_By_Id,
+    SEARCH_PRODUCT,
     
   } from "../constants/types";
   
@@ -30,6 +32,18 @@ import {
           loading: false,
           products: payload,
         };
+        case GET_PRODUCT_By_Id:
+          return {
+            ...state,
+            loading: false,
+            product: payload,
+          };
+          case SEARCH_PRODUCT:
+         return {
+           ...state,
+           loading: false,
+           products: payload,
+          };
 
       case PRODUCT_ERROR:
         return {

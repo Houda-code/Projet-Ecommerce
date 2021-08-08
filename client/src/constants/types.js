@@ -17,4 +17,6 @@ export const GET_PRODUCTS   = "GET_PRODUCTS";
 export const PRODUCT_ERROR   = "PRODUCT_ERROR";
 export const DELETE_PRODUCT = "DELETE_PRODUCT";
 export const UPDATE_PRODUCT = "GET_INVOICES" ;
+export const GET_PRODUCT_By_Id = "GET_PRODUCT_By_Id" ;
+export const SEARCH_PRODUCT="SEARCH_PRODUCT";
 

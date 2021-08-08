@@ -57,9 +57,36 @@ const updateProduct = async (req, res) => {
     return res.json(err);
   }
 };
+const getProductById = async (req, res) => {
+  const id = req.params.productid;
+  try {
+    const product = await Product.findById(id)
+    return res.status(200).json({ product: product });
+  } catch (err) {
+    return res.status(500).json({ err_message: err });
+  }
+};
+const getProductAutoComplete = async (req, res) => {
+  const pagination = req.query.pagination ? parseInt(req.query.pagination) : 5;
+  const q = req.query.q !== "" ? req.query.q : "";
+
+  try {
+    const products = await Product.find({
+      name: { $regex: `.*${q}.*` },
+    })
+      .limit(pagination)
+      .sort({ createdAt: 1 });
+
+    return res.status(200).json({ products: products });
+  } catch (err) {
+    return res.status(500).json({ err_message: err });
+  }
+};
 
 module.exports.getProducts = getProducts;
 module.exports.createProduct = createProduct;
 module.exports.deleteProduct = deleteProduct;
 module.exports.updateProduct = updateProduct;
+module.exports.getProductById = getProductById;
+module.exports.getProductAutoComplete = getProductAutoComplete;
 

@@ -1,10 +1,24 @@
-import React,{Fragment}  from 'react';
+import React,{Fragment,useEffect}  from 'react';
+import { useParams,useHistory } from "react-router-dom";
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
+import {
+    getProductById
+} from "../../../actions/product.actions";
 
 
-function productCard() {
+const ProductCard =({getProductById,product})=> {
+const {productid} =useParams;
+useEffect(() => {
+   getProductById(productid);
+},[])
+    
+    
     return (
     <Fragment>
-          
+   
+           
+         {`Product number #${productid}`}
 <div className="text-gray-700 body-font overflow-hidden bg-white">
   <div className="container px-5 py-24 mx-auto">
     <div className="lg:w-4/5 mx-auto flex flex-wrap">
@@ -13,7 +27,7 @@ function productCard() {
        src="https://www.whitmorerarebooks.com/pictures/medium/2465.jpg"/>
       <div className="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
         <h2 className="text-sm title-font text-gray-500 tracking-widest">BRAND NAME</h2>
-        <h1 className="text-gray-900 text-3xl title-font font-medium mb-1">The Catcher in the Rye</h1>
+        <h1 className="text-gray-900 text-3xl title-font font-medium mb-1">{product?.name}</h1>
         <div className="flex mb-4">
           <span className="flex items-center">
             <svg fill="currentColor" 
@@ -150,8 +164,23 @@ function productCard() {
     </div>
   </div>
 </div>
+            
        </Fragment>
     )
 }
 
-export default productCard;
+ProductCard.propTypes = {
+   
+    product: PropTypes.object.isRequired,
+    getProductById: PropTypes.func.isRequired,
+   
+  };
+  const mapStateToProps = (state) => ({
+    product: state.productReducer.product,
+  });
+  
+  const mapDispatchToProps = {
+   getProductById
+  };
+  
+  export default connect(mapStateToProps, mapDispatchToProps)(ProductCard);

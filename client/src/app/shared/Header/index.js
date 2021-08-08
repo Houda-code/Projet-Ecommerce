@@ -38,11 +38,14 @@ function Header() {
                </div>
 
                <div className="flex items-center justify-end w-1/6 gap-7 mr-8 ">
+               <Link to="" className="text-xl hover:bg-gray-400 rounded-full w-8 pl-2">
+               <i className="fas fa-shopping-bag"></i>
+                 </Link>
                  <Link to="" className="text-xl hover:bg-gray-400 rounded-full w-8 pl-1">
-                 <i class="fas fa-heart text-black"></i>
+                 <i className="fas fa-heart text-black"></i>
                  </Link>
                  <Link to="" className="text-xl hover:bg-gray-400 rounded-full w-8 pl-2">
-                 <i class="fas fa-user"></i>
+                 <i className="fas fa-user"></i>
                  </Link>
                </div>
            </nav>

@@ -1,10 +1,11 @@
-import React, { Fragment, useEffect } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import {
   getProducts,
+  searchProductByName,
 
 } from "../../actions/product.actions";
 
@@ -12,21 +13,42 @@ import {
 const Landing = ({
   getProducts,
   productState,
+  searchProductByName,
 }) => {
 
   useEffect(() => {
     getProducts();
   }, []);
+  const [SearchName, setSearchName] = useState("");
+
+  const onChangeSearch = async (e) => {
+    e.preventDefault();
+    await setSearchName(e.target.value);
+    await searchProductByName(e.target.value);
+  };
 
 
 
             return (
               <Fragment>
+               <div className="flex justify-between items-center  my-4 px-96 py-5">
+                   <input
+                     name="searchProduct"
+                     placeholder="Keyword"
+                     className="py-2 pr-4 pl-8 rounded focus:outline-none w-full text-dark shadow"
+                     type="text"
+                     onChange={(e) => onChangeSearch(e)}
+                     value={SearchName}
+                     autoFocus />
+                   <span className="absolute ml-2">
+                    <i className="fas fa-search text-dark"></i>
+                  </span>
+               </div>
            
               {productState.products &&
          productState?.products.map((elProduct) => {
             return (
-              <Link to="/login">
+              <Link to={`/landing/${elProduct._id}`}>
               <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 mt-6">
                     <div className="w-full max-w-sm mx-auto rounded-md shadow-md overflow-hidden">
                         <img className="h-56 w-full bg-cover" src={elProduct.imageUrl} alt={elProduct.name} /> 
@@ -65,6 +87,8 @@ const Landing = ({
 Landing.propTypes = {
   getProducts: PropTypes.func.isRequired,
   productState:PropTypes.object.isRequired,
+  searchProductByName: PropTypes.func.isRequired,
+  
   
 };
 const mapStateToProps = (state) => ({
@@ -74,6 +98,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = {
  getProducts,
+ searchProductByName,
 };
 
  export default connect(mapStateToProps, mapDispatchToProps)(Landing);
