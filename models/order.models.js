@@ -4,21 +4,26 @@ const uniqueValidator = require("mongoose-unique-validator");
 
 const OrderSchema = new Schema(
     {
-      buyer: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
+      user: { type: mongoose.Schema.Types.ObjectId, ref: "User" , required:true},
       reference: { type: String, required: true, unique: true, index: true },
       items: [
         {
-          product: { type: mongoose.Schema.Types.ObjectId, ref: "Product" },
+          product: { type: mongoose.Schema.Types.ObjectId, ref: "Product",required:true },
           quantity: { type: Number, min: 1, required: true },
           subTotal: { type: Number, min: 0, required: true },
         },
       ],
+      address: { type: mongoose.Schema.Types.ObjectId, ref: "Adress",required: true},
+      description: { type: String,required: true},
+
       total: { type: Number, min: 0, required: true },
       isPayed: { type: Boolean, default: false },
-      date: {type:date},
+      
       adminConfirmation: {
+        signature: { type: String, required: true },
         status: { type: String, default: "pending" },
-        Date: { type: Date },
+        ConfirmationDate: { type: Date },
+
       },
        
     },

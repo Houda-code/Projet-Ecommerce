@@ -20,6 +20,9 @@ mongoose.connection.on("error", (err) => {
 //import route middlewares
 const authRoutes = require("./routes/auth.routes");
 const productRoutes = require("./routes/product.routes");
+const cartRoutes = require("./routes/cart.routes");
+
+
 
 
 //middlewares
@@ -31,6 +34,7 @@ app.use(express.urlencoded({ extended: true }));
 //route middlewares
 app.use("/auth",authRoutes);
 app.use("/product",productRoutes);
+app.use("/cart",cartRoutes);
 
 
 //server listening

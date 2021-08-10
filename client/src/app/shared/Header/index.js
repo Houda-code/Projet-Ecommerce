@@ -38,7 +38,7 @@ function Header() {
                </div>
 
                <div className="flex items-center justify-end w-1/6 gap-7 mr-8 ">
-               <Link to="" className="text-xl hover:bg-gray-400 rounded-full w-8 pl-2">
+               <Link to="/panier" className="text-xl hover:bg-gray-400 rounded-full w-8 pl-2">
                <i className="fas fa-shopping-bag"></i>
                  </Link>
                  <Link to="" className="text-xl hover:bg-gray-400 rounded-full w-8 pl-1">

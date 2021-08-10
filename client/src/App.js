@@ -3,6 +3,8 @@ import Register from "./app/auth/Register";
 import Landing from "./app/Landing";
 import Header from "./app/shared/Header";
 import ProductCard from "./app/Landing/ProductCard";
+import Panier from "./app/Landing/Panier";
+
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { Provider } from "react-redux";
 import { store } from "./store";
@@ -35,6 +37,8 @@ function App() {
                  <Route exact path="/register" component={ Register } />
                  <Route exact path="/landing" component={ Landing } />
                  <Route exact path="/landing/:productid" component={ ProductCard } />
+                 <Route exact path="/panier" component={ Panier } />
+
         
               </Switch>
         

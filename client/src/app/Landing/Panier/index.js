@@ -1,95 +1,92 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 const Panier = () => {
     return (
+        <div className="flex justify-center my-6">
+            <div className="flex flex-col w-full p-8 text-gray-800 bg-white shadow-lg pin-r pin-y md:w-4/5 lg:w-4/5">
+                <div className="flex-1">
+                     <table className="w-full text-sm lg:text-base" cellspacing="0">
+                        <thead>
+                            <tr className="h-12 uppercase">
+                                <th className="hidden md:table-cell"></th>
+                                <th className="text-left">Product</th>
+                                <th className="lg:text-right text-left pl-5 lg:pl-0">
+                                    <span className="lg:hidden" title="Quantity">Qtd</span>
+                                    <span className="hidden lg:inline">Quantity</span>
+                                </th>
+                                <th className="hidden text-right md:table-cell">Unit price</th>
+                                <th className="text-right">Total price</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td className="hidden pb-4 md:table-cell">
+                                <Link to="">
+                                    <img src="https://limg.app/i/Calm-Cormorant-Catholic-Pinball-Blaster-yM4oub.jpeg" className="w-20 rounded" alt="Thumbnail"/>
+                                </Link>
+                                </td>
+                                <td>
+                                    <Link to="">
+                                        <p className="mb-2 md:ml-4">Earphone</p>
+                                        <form action="" method="POST">
+                                            <button type="submit" className="text-gray-700 md:ml-4">
+                                                <small>(Remove item)</small>
+                                            </button>
+                                        </form>
+                                    </Link>
+                                </td>
+                                <td className="justify-center md:justify-end md:flex mt-6">
+                                    <div className="w-20 h-10">
+                                        <div className="relative flex flex-row w-full h-8">
+                                            <input type="number" value="2" 
+                                            className="w-full font-semibold text-center text-gray-700 bg-gray-200 outline-none focus:outline-none hover:text-black focus:text-black" />
+                                        </div>
+                                    </div>
+                                </td>
+                                <td className="hidden text-right md:table-cell">
+                                    <span className="text-sm lg:text-base font-medium">
+                                    10.00€
+                                    </span>
+                                </td>
+                                <td className="text-right">
+                                <span className="text-sm lg:text-base font-medium">
+                20.00€
+              </span>
+                                </td>
+          </tr> 
+          
+          
+        </tbody>
+                    </table>
+                    <hr className="pb-6 mt-6"/>
+                   
+                    <div className="my-4 mt-6 -mx-2 lg:flex">
         
-            <div className="p-5">
-    <div className="flex h-64 justify-center">
-        <div className="relative ">
-            <div className="flex flex-row cursor-pointer truncate p-2 px-4  rounded">
-            <div></div>
-                <div className="flex flex-row-reverse ml-2 w-full">
-                    <div slot="icon" className="relative">
-                        <div className="absolute text-xs rounded-full -mt-1 -mr-2 px-1 font-bold top-0 right-0 bg-red-700 text-white">3</div>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="feather feather-shopping-cart w-6 h-6 mt-2">
-                            <circle cx="9" cy="21" r="1"></circle>
-                            <circle cx="20" cy="21" r="1"></circle>
-                            <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
-                        </svg>
-                    </div>
+        <div className="lg:px-2 lg:w-1/2">
+          
+          <div className="p-4">   
+                <div className="flex justify-between pt-4 border-b">
+                  <div className="lg:px-4 lg:py-2 m-2 text-lg lg:text-xl font-bold text-center text-gray-800">
+                    Total
+                  </div>
+                  <div className="lg:px-4 lg:py-2 m-2 lg:text-lg font-bold text-center text-gray-900">
+                    17,859.3€
+                  </div>
                 </div>
-            </div>
-            <div className="absolute w-full  rounded-b border-t-0 z-10">
-                <div className="shadow-xl w-64">
-                    <div className="p-2 flex bg-white hover:bg-gray-100 cursor-pointer border-b border-gray-100" style="">
-                        <div className="p-2 w-12"><img src="https://dummyimage.com/50x50/bababa/0011ff&amp;text=50x50" alt="img product"> </div>
-                        <div className="flex-auto text-sm w-32">
-                            <div className="font-bold">Product 1</div>
-                            <div className="truncate">Product 1 description</div>
-                            <div className="text-gray-400">Qt: 2</div>
-                        </div>
-                        <div className="flex flex-col w-18 font-medium items-end">
-                            <div className="w-4 h-4 mb-6 hover:bg-red-200 rounded-full cursor-pointer text-red-700">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="feather feather-trash-2 ">
-                                    <polyline points="3 6 5 6 21 6"></polyline>
-                                    <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
-                                    <line x1="10" y1="11" x2="10" y2="17"></line>
-                                    <line x1="14" y1="11" x2="14" y2="17"></line>
-                                </svg>
-                            </div>
-                            $12.22</div>
-                    </div>
-                    <div className="p-2 flex bg-white hover:bg-gray-100 cursor-pointer border-b border-gray-100" style="">
-                        <div className="p-2 w-12"><img src="https://dummyimage.com/50x50/bababa/0011ff&amp;text=50x50" alt="img product"/></div>
-                        <div className="flex-auto text-sm w-32">
-                            <div className="font-bold">Product 2</div>
-                            <div className="truncate">Product 2 long description</div>
-                            <div className="text-gray-400">Qt: 2</div>
-                        </div>
-                        <div className="flex flex-col w-18 font-medium items-end">
-                            <div className="w-4 h-4 mb-6 hover:bg-red-200 rounded-full cursor-pointer text-red-700">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="feather feather-trash-2 ">
-                                    <polyline points="3 6 5 6 21 6"></polyline>
-                                    <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
-                                    <line x1="10" y1="11" x2="10" y2="17"></line>
-                                    <line x1="14" y1="11" x2="14" y2="17"></line>
-                                </svg>
-                            </div>
-                            $12.22</div>
-                    </div>
-                    <div className="p-2 flex bg-white hover:bg-gray-100 cursor-pointer border-b border-gray-100" style="">
-                        <div className="p-2 w-12"><img src="https://dummyimage.com/50x50/bababa/0011ff&amp;text=50x50" alt="img product"></div>
-                        <div className="flex-auto text-sm w-32">
-                            <div className="font-bold">Product 3</div>
-                            <div className="truncate">Product 3 description</div>
-                            <div className="text-gray-400">Qt: 2</div>
-                        </div>
-                        <div className="flex flex-col w-18 font-medium items-end">
-                            <div className="w-4 h-4 mb-6 hover:bg-red-200 rounded-full cursor-pointer text-red-700">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="feather feather-trash-2 ">
-                                    <polyline points="3 6 5 6 21 6"></polyline>
-                                    <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
-                                    <line x1="10" y1="11" x2="10" y2="17"></line>
-                                    <line x1="14" y1="11" x2="14" y2="17"></line>
-                                </svg>
-                            </div>
-                            $12.22</div>
-                    </div>
-                    <div className="p-4 justify-center flex">
-                        <button className="text-base  undefined  hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer 
-        hover:bg-teal-700 hover:text-teal-100 
-        bg-teal-100 
-        text-teal-700 
-        border duration-200 ease-in-out 
-        border-teal-600 transition">Checkout $36.66</button>
-                    </div>
+              <Link to="">
+                <button className="flex justify-center w-full px-10 py-3 mt-6 font-medium text-white uppercase bg-gray-800 rounded-full shadow item-center hover:bg-gray-700 focus:shadow-outline focus:outline-none">
+                  <svg aria-hidden="true" data-prefix="far" data-icon="credit-card" className="w-8" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path fill="currentColor" d="M527.9 32H48.1C21.5 32 0 53.5 0 80v352c0 26.5 21.5 48 48.1 48h479.8c26.6 0 48.1-21.5 48.1-48V80c0-26.5-21.5-48-48.1-48zM54.1 80h467.8c3.3 0 6 2.7 6 6v42H48.1V86c0-3.3 2.7-6 6-6zm467.8 352H54.1c-3.3 0-6-2.7-6-6V256h479.8v170c0 3.3-2.7 6-6 6zM192 332v40c0 6.6-5.4 12-12 12h-72c-6.6 0-12-5.4-12-12v-40c0-6.6 5.4-12 12-12h72c6.6 0 12 5.4 12 12zm192 0v40c0 6.6-5.4 12-12 12H236c-6.6 0-12-5.4-12-12v-40c0-6.6 5.4-12 12-12h136c6.6 0 12 5.4 12 12z"/></svg>
+                  <span className="ml-2 mt-5px">Procceed to checkout</span>
+                </button>
+              </Link>
+          </div>
+        
+        </div>
+      </div>
                 </div>
             </div>
         </div>
-    </div>
-    <div className="h-32"></div>
-</div>
-        
     )
 }
 
