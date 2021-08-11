@@ -63,5 +63,17 @@ const Cart = require("../models/cart.models");
       return res.status(500).json({ err_message: err });
     }
   };
+  const getCartItems = async (req, res) => {
+    try {
+      const cartItems = await cartItems.find();
+      return res.status(200).json({ cartItems: cartItems });
+    } catch (err) {
+      return res.status(500).json({ err_message: err });
+    }
+  };
+  
+  
   module.exports.addItemToCart = addItemToCart;
+  module.exports.getCartItems = getCartItems;
+
   

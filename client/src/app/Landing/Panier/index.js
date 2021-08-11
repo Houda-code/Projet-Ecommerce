@@ -1,7 +1,21 @@
-import React from 'react'
+import React ,{useEffect} from 'react'
 import { Link } from 'react-router-dom'
+import { connect } from "react-redux";
+import PropTypes from "prop-types";
+import {
+    
+    getCartItems,
+    
+  
+  } from "../../../actions/cart.actions";
+  
+  
 
-const Panier = () => {
+const Panier = ({getCartItems,cartState}) => {
+    useEffect(() => {
+        getCartItems();
+     },[])
+    
     return (
         <div className="flex justify-center my-6">
             <div className="flex flex-col w-full p-8 text-gray-800 bg-white shadow-lg pin-r pin-y md:w-4/5 lg:w-4/5">
@@ -20,15 +34,18 @@ const Panier = () => {
                             </tr>
                         </thead>
                         <tbody>
+                        {cartState.carts &&
+         cartState?.carts.map((elitem) => {
+            return (
                             <tr>
                                 <td className="hidden pb-4 md:table-cell">
                                 <Link to="">
-                                    <img src="https://limg.app/i/Calm-Cormorant-Catholic-Pinball-Blaster-yM4oub.jpeg" className="w-20 rounded" alt="Thumbnail"/>
+                                    <img src={elitem.imageUrl} className="w-20 rounded" alt="Thumbnail"/>
                                 </Link>
                                 </td>
                                 <td>
                                     <Link to="">
-                                        <p className="mb-2 md:ml-4">Earphone</p>
+                                        <p className="mb-2 md:ml-4">{elitem.name}</p>
                                         <form action="" method="POST">
                                             <button type="submit" className="text-gray-700 md:ml-4">
                                                 <small>(Remove item)</small>
@@ -46,16 +63,16 @@ const Panier = () => {
                                 </td>
                                 <td className="hidden text-right md:table-cell">
                                     <span className="text-sm lg:text-base font-medium">
-                                    10.00€
-                                    </span>
+                                    {elitem.price}
+                                    </span> 
                                 </td>
                                 <td className="text-right">
                                 <span className="text-sm lg:text-base font-medium">
-                20.00€
+                                {elitem.price}
               </span>
                                 </td>
           </tr> 
-          
+           )  } )}
           
         </tbody>
                     </table>
@@ -70,7 +87,7 @@ const Panier = () => {
                   <div className="lg:px-4 lg:py-2 m-2 text-lg lg:text-xl font-bold text-center text-gray-800">
                     Total
                   </div>
-                  <div className="lg:px-4 lg:py-2 m-2 lg:text-lg font-bold text-center text-gray-900">
+                  <div className="lg:px-4 lg:py-2 m-2 lg:text-lg font-bold text-center text-gray-900"> 
                     17,859.3€
                   </div>
                 </div>
@@ -90,4 +107,20 @@ const Panier = () => {
     )
 }
 
-export default Panier
+Panier.propTypes = {
+    getCartItems: PropTypes.func.isRequired,
+    cartState:PropTypes.object.isRequired,
+    
+    
+  };
+  const mapStateToProps = (state) => ({
+    cartState: state.cartReducer,
+    
+  });
+  
+  const mapDispatchToProps = {
+    getCartItems,
+   
+  };
+  
+   export default connect(mapStateToProps, mapDispatchToProps)(Panier);

@@ -8,12 +8,20 @@ import {
   searchProductByName,
 
 } from "../../actions/product.actions";
+import {
+  addItemToCart 
+  
+
+} from "../../actions/cart.actions";
+
 
 
 const Landing = ({
   getProducts,
   productState,
   searchProductByName,
+  addItemToCart ,
+  cartState
 }) => {
 
   useEffect(() => {
@@ -56,7 +64,8 @@ const Landing = ({
                         <div className="flex-row items-end">  
                         <Link to="/login">
                         <button  className=" flex items-end p-2 rounded-full bg-blue-600 text-white mx-5 -mb-4 hover:bg-blue-500 focus:outline-none focus:bg-blue-500"
-                        onClick>
+                        onClick
+                        >
                                 <svg className="h-5 w-5" 
                                 fill="none" 
                                 strokeLinecap="round" 
@@ -92,17 +101,21 @@ Landing.propTypes = {
   getProducts: PropTypes.func.isRequired,
   productState:PropTypes.object.isRequired,
   searchProductByName: PropTypes.func.isRequired,
+  addItemToCart : PropTypes.func.isRequired,
+  cartState:PropTypes.object.isRequired,
   
   
 };
 const mapStateToProps = (state) => ({
   productState: state.productReducer,
+  cartState: state.cartReducer,
   
 });
 
 const mapDispatchToProps = {
  getProducts,
  searchProductByName,
+ addItemToCart 
 };
 
  export default connect(mapStateToProps, mapDispatchToProps)(Landing);

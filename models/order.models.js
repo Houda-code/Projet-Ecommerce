@@ -13,7 +13,8 @@ const OrderSchema = new Schema(
           subTotal: { type: Number, min: 0, required: true },
         },
       ],
-      address: { type: mongoose.Schema.Types.ObjectId, ref: "Adress",required: true},
+      // address: { type: mongoose.Schema.Types.ObjectId, ref: "Adress",required: true},
+        adresse:{type:String},
       description: { type: String,required: true},
 
       total: { type: Number, min: 0, required: true },

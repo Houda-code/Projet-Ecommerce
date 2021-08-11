@@ -21,7 +21,7 @@ const Login = ({login, auth, spinner}) => {
     login(loginForm);
   };
   if (auth.isAuthenticated) {
-    history.push("/");
+    history.push("/landing");
   }
   return spinner.loading ? (
     <Spinner />
