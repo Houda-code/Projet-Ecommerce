@@ -60,7 +60,10 @@ const updateProduct = async (req, res) => {
 const getProductById = async (req, res) => {
   const id = req.params.productid;
   try {
-    const product = await Product.findById(id)
+    const product = await Product.findById(id).populate({
+      path: "category",
+      select: "title brand",
+    });
     return res.status(200).json({ product: product });
   } catch (err) {
     return res.status(500).json({ err_message: err });

@@ -1,79 +1,59 @@
 const Cart = require("../models/cart.models");
+const User = require("../models/user.models");
+const Product = require("../models/product.models");
 
-
-
-/*exports.addItemToCart = (req, res) => {
-    
-    
-        const cart = new Cart({
-          cartItems: req.body.cartItems,
-        });
-        cart.save((error, cart) => {
-          if (error) return res.status(400).json({ error });
-          if (cart) {
-            return res.status(201).json({ cart });
-          }
-        });
-     
-  };*/
-  const addItemToCart = async (req, res) => {
-   
+const addItemToCart = async (req, res) => {
     try {
       const existCart = await Cart.findOne({ user: req.verifiedUser._id });
     if (existCart)
-      { const product=cartItems.product
-        const item= cart.cartItems.find(c => c.product == product);
-        if ( item)
-         {
-           
-        const updatedCart= await Cart.findOneAndUpdate({"user": req.verifiedUser._id,"cartItems.product":product},{
+      {
+        const item = existCart.cartItems.find((c) => c.product == req.body.productData.product);
+        
+        
+        if(item){
+          
+        const updatedCart= await Cart.findOneAndUpdate({"user": req.verifiedUser._id},{
           "$set":{
             "cartItmes":{
               ...req.body.cartItems,
-              quantity:item.quantity + req.body.cartItems.quantity
-            }
+              quantity:item.quantity+req.body.carItems.quantity }
           }
         });
         const savedCart = await updatedCart.save();
         return res.status(201).json({ cart: savedCart });
-          
-        } else {
-          
-        const updatedCart= await Cart.findOneAndUpdate({user: req.verifiedUser._id},{
-          "$push":{
-            "cartItmes":req.body.cartItems//ikollek created w mch kaed izid feha
-          }
-        });
-        const savedCart = await updatedCart.save();
-        return res.status(201).json({ cart: savedCart });
-        }
 
+        }
+        else{
+          existCart.cartItems.push(req.body.productData)
+          await existCart.save()
+
+        return res.status(201).json({ cart: existCart });
+
+        }
+        
         
       }
       else{
       const newCart = new Cart({
         user: req.verifiedUser._id,
-        cartItems: [req.body.cartItems],
+        cartItems: [req.body.productData],
       });
       const savedCart = await newCart.save();
-    
       return res.status(201).json({ cart: savedCart });
       }
     } catch (err) {
       return res.status(500).json({ err_message: err });
     }
-  };
-  const getCartItems = async (req, res) => {
-    try {
-      const cartItems = await cartItems.find();
-      return res.status(200).json({ cartItems: cartItems });
-    } catch (err) {
-      return res.status(500).json({ err_message: err });
-    }
-  };
-  
-  
-  module.exports.addItemToCart = addItemToCart;
-  module.exports.getCartItems = getCartItems;
+};
 
-  
+
+const getCartItems = async (req, res) => {
+  try{
+    const cart = await Cart.find({user: req.verifiedUser._id});
+    return res.status(200).json({ cartItems: cart.cartItems });
+  }catch (err) {
+    return res.status(500).json({ err_message: err });
+  }
+  };
+module.exports.addItemToCart = addItemToCart; 
+module.exports.getCartItems = getCartItems;

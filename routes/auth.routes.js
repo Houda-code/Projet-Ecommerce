@@ -13,8 +13,8 @@ router.post("/register", async (req, res) => {
 
     const salt = await bcrypt.genSalt(16);
     const hashedPassword = await bcrypt.hash(req.body.password, salt);
-    
-    const newAddress = new Address({
+
+      const newAddress = new Address({
       city: req.body.city,
       zipCode: req.body.zipCode,
       street: req.body.street,
@@ -41,11 +41,12 @@ router.post("/login", async (req, res) => {
     const userExist = await User.findOne({ email: req.body.email });
     if (!userExist)
       return res.status(401).json({ err_message: "Email Wrong" });
+
     const validPassword = await bcrypt.compare(
       req.body.password,
       userExist.password
     );
-    if (!validPassword)
+   if (!validPassword)
       return res.status(401).json({ err_message: "Password Wrong" });
     const token = jwt.sign(
       {

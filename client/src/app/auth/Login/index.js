@@ -39,9 +39,11 @@ const Login = ({login, auth, spinner}) => {
                                    <label className="block text-sm text-white" 
                                    htmlFor="email">E-mail</label>
                                    <input
+                                   onChange={e=>onChangeForm(e)}
                                     className="w-full px-5 py-1 text-gray-700 bg-gray-300 rounded focus:outline-none focus:bg-white"
                                     type="email" 
                                     id="email" 
+                                    name="email"
                                      placeholder=" e-mail" 
                                      aria-label="email" 
                                      required/>
@@ -54,7 +56,8 @@ const Login = ({login, auth, spinner}) => {
                                      onChange={(e) => onChangeForm(e)}
                                      className="w-full px-5 py-1 text-gray-700 bg-gray-300 rounded focus:outline-none focus:bg-white"
                                     type="password"
-                                     id="password" 
+                                     id="password"
+                                     name="password"
                                      placeholder="password"
                                       arial-label="password" 
                                       required/>

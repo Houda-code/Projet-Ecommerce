@@ -44,9 +44,12 @@ function Header() {
                  <Link to="" className="text-xl hover:bg-gray-400 rounded-full w-8 pl-1">
                  <i className="fas fa-heart text-black"></i>
                  </Link>
+                 <div>
                  <Link to="" className="text-xl hover:bg-gray-400 rounded-full w-8 pl-2">
                  <i className="fas fa-user"></i>
                  </Link>
+                 </div>
+                 
                </div>
            </nav>
        </header>
