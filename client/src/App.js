@@ -2,9 +2,10 @@ import Login from "./app/auth/Login";
 import Register from "./app/auth/Register";
 import Landing from "./app/Landing";
 import Header from "./app/shared/Header";
+import Footer from "./app/shared/Footer";
+
 import ProductCard from "./app/Landing/ProductCard";
 import Panier from "./app/Landing/Panier";
-
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { Provider } from "react-redux";
 import { store } from "./store";
@@ -12,8 +13,6 @@ import { Fragment,useEffect } from "react";
 import { setAuthToken } from "./utils/setAuthToken";
 import { loadUser } from "./actions/auth.actions";
 import { USER_LOGOUT } from "./constants/types";
-
-
 
 function App() {
  
@@ -41,6 +40,7 @@ function App() {
 
         
               </Switch>
+              <Footer/>
         
         </Router>
      

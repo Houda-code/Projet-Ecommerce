@@ -35,7 +35,10 @@ const Landing = ({
     await searchProductByName(e.target.value);
   };
 
-
+  //const createItem = async (e) => {
+  //  e.preventDefault();
+  //  await addItemToCart({ ...InvoiceData, total: Total, items: Items });
+ // };
 
             return (
               <Fragment>
@@ -64,7 +67,7 @@ const Landing = ({
                         <div className="flex-row items-end">  
                         <Link to="/login">
                         <button  className=" flex items-end p-2 rounded-full bg-blue-600 text-white mx-5 -mb-4 hover:bg-blue-500 focus:outline-none focus:bg-blue-500"
-                        onClick
+                       // onClick={(e) =>createItem (e)}
                         >
                                 <svg className="h-5 w-5" 
                                 fill="none" 
